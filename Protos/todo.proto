@@ -1,0 +1,26 @@
+syntax = "proto3";
+
+option csharp_namespace = "Todo_Grpc";
+
+package todo;
+
+// The greeting service definition.
+service Todo {
+  // Sends a greeting
+  rpc GetAll (TodoRequest) returns (stream TodoResponse);
+  rpc GetById (TodoRequest) returns (TodoResponse);
+  rpc Create (TodoRequest) returns (TodoResponse);
+  rpc ConcluirTodo (TodoRequest) returns (TodoResponse);
+  rpc Delete (TodoRequest) returns (TodoResponse);
+}
+
+message TodoRequest {
+    string Description = 1;  
+    
+}
+
+message TodoResponse {
+    string Description = 1;
+    bool IsDone = 2;
+    int32 Id = 3;
+}
